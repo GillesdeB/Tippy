@@ -1,9 +1,9 @@
 // From Android App Development Tutorial for Beginners - Your First App
 // Latest update: 2022-01-10
-//        https://www.youtube.com/watch?v=FjrKMcnKahY
-// Using: https://emojipedia.org/red-heart/
-//        https://color.adobe.com/create/color-wheel
-// ToDo: save/restore state when app goes to or returnd gtom bsckgtound
+// Based on:      https://www.youtube.com/watch?v=FjrKMcnKahY
+// Using:         https://emojipedia.org/red-heart/
+//                https://color.adobe.com/create/color-wheel
+// ToDo: save/restore state when app goes to or returns from background
 // ToDo: allow palindrome
 // ToDo: enter amount paid and show the money to get back
 
@@ -13,6 +13,7 @@ import android.animation.ArgbEvaluator
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         seekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                // Log.i(TAG, msg: "onProgressChanged $progress")
+                Log.i(TAG, "onProgressChanged $progress")
                 tvTipPercentLabel.text = "$progress%"
                 computeTipAndTotals()
                 updateTipDescription(progress)
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                // Log.i(TAG, msg"afterTextChanged $s")
+                Log.i(TAG, "afterTextChanged $s")
                 computeTipAndTotals()
             }
 
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                // Log.i(TAG, msg"afterTextChanged $s")
+                Log.i(TAG, "afterTextChanged $s")
                 computeTipAndTotals()
             }
 
@@ -88,6 +89,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateTipDescription(tipPercent: Int) {
+        // Update description based on tip percentage
         val tipDescription = when (tipPercent) {
             in 0..9 -> "Poor"
             in 10..14 -> "Acceptable"
@@ -119,13 +121,13 @@ class MainActivity : AppCompatActivity() {
         val tipAmount = baseAmount * tipPercent / 100
         val totalAmount = baseAmount + tipAmount
         // 3. Update the UI
-        tvTipAmount.text = "%.2f".format(tipAmount)
-        tvTotalAmount.text = "%.2f".format(totalAmount)
+        tvTipAmount.text = getString(R.string.twoDecimalsOnFloat).format(tipAmount)
+        tvTotalAmount.text = getString(R.string.twoDecimalsOnFloat).format(totalAmount)
         // 4. Compute the total per participant
         val numberOfParticipants = etNumberOfParticipants.text.toString().toDouble()
         val totalAmountPerParticipant = totalAmount / numberOfParticipants
         // 5. Update the UI
-        tvTotalPerParticipant.text = "%.2f".format(totalAmountPerParticipant)
+        tvTotalPerParticipant.text = getString(R.string.twoDecimalsOnFloat).format(totalAmountPerParticipant)
     }
 
 }

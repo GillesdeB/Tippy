@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:fontFamily="sans-serif-thin"
-        android:text="Made in California by GdeB ❤️"
+        android:text="@string/made_in_california_by_gdeb"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="48dp"
-        android:text="Base"
+        android:text="@string/base"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:text="Tip"
+        android:text="@string/tip"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/tvTipPercentLabel"
         app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel" />
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Total"
+        android:text="@string/total"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/tvTipLabel"
         app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel" />
@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Participants"
+        android:text="@string/participants"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/tvTotalLabel"
         app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel" />
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Total each"
+        android:text="@string/total_each"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/tvNumberOfParticipantsLabel"
         app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel" />
@@ -91,12 +91,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:ems="8"
-        android:hint="Bill amount"
+        android:hint="@string/bill_amount"
         android:inputType="numberDecimal"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/tvBaseLabel"
         app:layout_constraintTop_toTopOf="@id/tvBaseLabel"
-        app:layout_constraintBottom_toBottomOf="@id/tvBaseLabel" />
+        app:layout_constraintBottom_toBottomOf="@id/tvBaseLabel"
+        android:autofillHints="@string/base_Amount_AutofillHints" />
 
     <SeekBar
         android:id="@+id/sbTip"
@@ -142,12 +143,14 @@
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/tvNumberOfParticipantsLabel"
         app:layout_constraintStart_toStartOf="@+id/tvTotalAmount"
-        app:layout_constraintTop_toTopOf="@+id/tvNumberOfParticipantsLabel" />
+        app:layout_constraintTop_toTopOf="@+id/tvNumberOfParticipantsLabel"
+        android:autofillHints="How many people will share the bill?" />
 
     <TextView
         android:id="@+id/tvTotalPerParticipant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/tvTotalPerParticipantLabel"
         app:layout_constraintStart_toStartOf="@+id/etNumberOfParticipants"
         app:layout_constraintTop_toTopOf="@+id/tvTotalPerParticipantLabel" />
